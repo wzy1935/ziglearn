@@ -2,36 +2,44 @@
 title: "Chapter 1 - Basics"
 weight: 2
 date: 2021-02-22 18:27:00
-description: "Chapter 1 - This will get you up to speed with almost all of the Zig programming language. This part of the tutorial should be coverable in under an hour."
+description: "Chapter 1 - This will get you up to speed with almost all of the Zig programming language. This part of the tutorial should be coverable in under an hour."fu
 ---
 
-# Assignment
 
-Value assignment has the following syntax: `(const|var) identifier[: type] = value`.
 
-* `const` indicates that `identifier` is a **constant** that stores an immutable value.
-* `var` indicates that `identifier` is a **variable** that stores a mutable value.
-* `: type` is a type annotation for `identifier`, and may be omitted if the data type of `value` can be inferred.
+
+
+# 赋值
+
+使用以下语法为变量或常量赋值： `(const|var) identifier[: type] = value`
+
+* `const` 表示 `identifier` 是一个储存不可变数据的 **常量** 。
+* `var` 表示 `identifier` 是一个储存可变数据的 **变量** 。
+* `: type` 用来声明 `identifier`  的类型。如果该数据类型可以被自动推导的话也可以省略。
 
 <!--no_test-->
-```zig
-const constant: i32 = 5;  // signed 32-bit constant
-var variable: u32 = 5000; // unsigned 32-bit variable
 
-// @as performs an explicit type coercion
+```zig
+const constant: i32 = 5;  // 32位符号数常量
+var variable: u32 = 5000; // 32位无符号数变量
+
+// @as 用来显式的强制转换类型
 const inferred_constant = @as(i32, 5);
 var inferred_variable = @as(u32, 5000);
 ```
 
-Constants and variables *must* have a value. If no known value can be given, the [`undefined`](https://ziglang.org/documentation/master/#undefined) value, which coerces to any type, may be used as long as a type annotation is provided.
+常量和变量都必须有值。如果没有可用的值，在声明了类型的情况下，可以使用 [`undefined`](https://ziglang.org/documentation/master/#undefined) 强制转换为任何类型的值。
 
 <!--no_test-->
+
 ```zig
 const a: i32 = undefined;
 var b: u32 = undefined;
 ```
 
-Where possible, `const` values are preferred over `var` values.
+尽量使用 `const `，而不是 `var` 。
+
+
 
 # Arrays
 
